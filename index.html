@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="toDoApp">
+<head>
+  <meta charset="utf-8">
+  <title>ToDo App</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="ctrl.js"></script>
+</head>
+
+
+<body ng-controller="toDoCtrl" class="container">
+<div class="row-fluid">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="jumbotron"><h3>Things to do</h3>
+      <div class="input-group input-group-lg">
+        <input type="text" ng-model="newTask">
+        <input type="button" value="Add new Task" class="btn btn-default" ng-click="addNewTask(newTask)">
+
+      </div>
+    </div>
+
+
+    <div id="taskL" class="list-group">
+
+      <div class="description" ng-repeat="task in tasks" ng-class="{'strike' : task.done}" class="list-group-item">
+
+        <input type="checkbox" ng-model="task.done">
+        {{task.description}}
+
+        <button type="button" ng-click="deleteTask($index)" class="bg-danger  btn btn-xs"> Delete</button>
+
+      </div>
+    </div>
+
+    <br>
+
+    <div id="todo-count">
+      <h4>{{pendingTasks}}
+        <ng-pluralize count="pendingTasks" when="{one : 'item left' , other: 'items left'} "></ng-pluralize>
+      </h4>
+    </div>
+
+    <div id="clear-complete">
+
+      <button class="text-danger" ng-show="tasks.length - pendingTasks" ng-click="clearComplete()">
+        Clear {{tasks.length - pendingTasks}} completed
+        <ng-pluralize count="tasks.length - pendingTasks" when="{one : 'item ' , other: 'items'} "></ng-pluralize>
+      </button>
+
+    </div>
+
+
+  </div>
+</div>
+</body>
+</html>

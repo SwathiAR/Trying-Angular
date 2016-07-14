@@ -1,0 +1,37 @@
+.strike {
+  text-decoration: line-through;
+}
+
+.description {
+  font-family: "Lobster" , cursive;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 0px;
+  cursor: pointer;
+
+
+}
+
+input {
+  margin-right: 10px;
+}
+
+#taskL button {
+  float: right;
+  margin-top: 5px;
+  font-size: 13px;
+  visibility: hidden;
+}
+
+#taskL :hover button {
+  visibility: visible;
+}
+
+#taskL .description:hover  {
+  background-color: grey;
+  cursor: pointer;
+}
+
+#clear-complete button {
+  float: right;
+}
